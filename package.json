@@ -1,0 +1,23 @@
+{
+  "name": "4inarow",
+  "version": "0.0.1",
+  "description": "Classic Connect Four Game using JS and jQuery",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewglassman/4inarow.git"
+  },
+  "keywords": [
+    "game",
+    "javascript"
+  ],
+  "author": "Matthew Glassman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matthewglassman/4inarow/issues"
+  },
+  "homepage": "https://github.com/matthewglassman/4inarow#readme"
+}
