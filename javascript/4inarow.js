@@ -7,6 +7,7 @@ class Fourinarow{
     this.COLS = 7;
     this.selector = selector;
     this.createGrid();
+    this.setupEventListeners();
 
   }
 
@@ -21,13 +22,31 @@ class Fourinarow{
         .addClass('row');
       for (let col = 0; col < this.COLS; col++) {
         const $col = $('<div>')
-          .addClass('col empty');
+          .addClass('col empty')
+          .attr('data-col', col)
+          .attr('data-row', row);
         $row.append($col);
       }
 
       $board.append($row);
     }
+  }
 
-    console.log($board.html());
+  //Highlight placement for player's disk
+
+  setupEventListeners(){
+    const $board = $(this.selector);
+
+    function findLastEmptyCell(col){
+      const cells = $(`.col[data-col='${col}']`);
+      console.log(cells);
+    }
+
+    $board.on('mouseover', '.col.empty', function(){
+      const col = $(this).data('col');
+      const $lastEmptyCell = findLastEmptyCell(col);
+      //$lastEmptyCell.addClass(`next-red`);
+      console.log(col);
+    })
   }
 }
