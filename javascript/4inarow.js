@@ -39,14 +39,21 @@ class Fourinarow{
 
     function findLastEmptyCell(col){
       const cells = $(`.col[data-col='${col}']`);
-      console.log(cells);
+      for (let i = cells.length - 1; i >= 0; i--) {
+        const $cell = $(cells[i]);
+        if ($cell.hasClass('empty')){
+            return $cell;
+        }
+      }
+      return null;
+      //console.log(cells);
     }
 
     $board.on('mouseenter', '.col.empty', function(){
       const col = $(this).data('col');
       const $lastEmptyCell = findLastEmptyCell(col);
-      //$lastEmptyCell.addClass(`next-red`);
-      console.log(col);
+      $lastEmptyCell.addClass(`next-red`);
+      //console.log(col);
     })
   }
 }
