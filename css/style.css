@@ -19,3 +19,14 @@ body {
 .next-red{
   background-color: rgb(255, 0, 0, 0.2);
 }
+
+.next-black{
+  background-color: rgb(255, 255, 255, 0.2);
+}
+.col.red{
+  background-color: red;
+}
+
+.col.black{
+  background-color: black;
+}

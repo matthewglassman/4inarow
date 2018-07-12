@@ -60,5 +60,13 @@ class Fourinarow{
     $board.on('mouseleave', '.col', function(){
       $('.col').removeClass(`next-red`);
     })
+
+    $board.on('click', '.col.empty', function(){
+      const col = $(this).data('col');
+      const row = $(this).data('row');
+      const $lastEmptyCell = findLastEmptyCell('col');
+      $lastEmptyCell.removeClass('empty');
+      $lastEmptyCell.addClass('red');
+    })
   }
 }
