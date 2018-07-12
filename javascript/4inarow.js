@@ -42,7 +42,7 @@ class Fourinarow{
       console.log(cells);
     }
 
-    $board.on('mouseover', '.col.empty', function(){
+    $board.on('mouseenter', '.col.empty', function(){
       const col = $(this).data('col');
       const $lastEmptyCell = findLastEmptyCell(col);
       //$lastEmptyCell.addClass(`next-red`);
