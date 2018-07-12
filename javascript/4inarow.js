@@ -55,5 +55,10 @@ class Fourinarow{
       $lastEmptyCell.addClass(`next-red`);
       //console.log(col);
     })
+
+    //immediately removes the class from the cell so that a color doesn't remain
+    $board.on('mouseleave', '.col', function(){
+      $('.col').removeClass(`next-red`);
+    })
   }
 }
