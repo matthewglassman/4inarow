@@ -5,6 +5,7 @@ class Fourinarow{
   constructor(selector) {
     this.ROWS = 6;
     this.COLS = 7;
+    this.player = 'red';
     this.selector = selector;
     this.createGrid();
     this.setupEventListeners();
@@ -36,6 +37,7 @@ class Fourinarow{
 
   setupEventListeners(){
     const $board = $(this.selector);
+    const that = this;
 
     function findLastEmptyCell(col){
       const cells = $(`.col[data-col='${col}']`);
@@ -52,13 +54,13 @@ class Fourinarow{
     $board.on('mouseenter', '.col.empty', function(){
       const col = $(this).data('col');
       const $lastEmptyCell = findLastEmptyCell(col);
-      $lastEmptyCell.addClass(`next-red`);
+      $lastEmptyCell.addClass(`next-${that.player}`);
       //console.log(col);
     })
 
     //immediately removes the class from the cell so that a color doesn't remain
     $board.on('mouseleave', '.col', function(){
-      $('.col').removeClass(`next-red`);
+      $('.col').removeClass(`next-${that.player}`);
     })
 
     $board.on('click', '.col.empty', function(){
@@ -66,7 +68,9 @@ class Fourinarow{
       const row = $(this).data('row');
       const $lastEmptyCell = findLastEmptyCell('col');
       $lastEmptyCell.removeClass('empty');
-      $lastEmptyCell.addClass('red');
+      $lastEmptyCell.addClass(that.player);
+      //switches which player has gone.
+      that.player = (that.player === 'red') ? 'black' : 'red';
     })
   }
 }
