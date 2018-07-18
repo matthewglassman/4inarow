@@ -35,42 +35,52 @@ class Fourinarow{
 
   //Highlight placement for player's disk
 
-  setupEventListeners(){
+  setupEventListeners() {
     const $board = $(this.selector);
+
+    //retain access to the original 'this' attribute
+
     const that = this;
 
-    function findLastEmptyCell(col){
+    function findLastEmptyCell(col) {
       const cells = $(`.col[data-col='${col}']`);
       for (let i = cells.length - 1; i >= 0; i--) {
         const $cell = $(cells[i]);
-        if ($cell.hasClass('empty')){
+        if ($cell.hasClass('empty')) {
             return $cell;
         }
       }
+
       return null;
+
       //console.log(cells);
     }
 
-    $board.on('mouseenter', '.col.empty', function(){
+    $board.on('mouseenter', '.col.empty', function () {
       const col = $(this).data('col');
       const $lastEmptyCell = findLastEmptyCell(col);
       $lastEmptyCell.addClass(`next-${that.player}`);
+
       //console.log(col);
-    })
+    });
 
     //immediately removes the class from the cell so that a color doesn't remain
-    $board.on('mouseleave', '.col', function(){
+    $board.on('mouseleave', '.col', function () {
       $('.col').removeClass(`next-${that.player}`);
-    })
+    });
 
-    $board.on('click', '.col.empty', function(){
+    $board.on('click', '.col.empty', function () {
       const col = $(this).data('col');
-      const row = $(this).data('row');
-      const $lastEmptyCell = findLastEmptyCell('col');
-      $lastEmptyCell.removeClass('empty');
+
+      //const row = $(this).data('row');
+
+      const $lastEmptyCell = findLastEmptyCell(col);
+      $lastEmptyCell.removeClass('empty next-${that.player}');
       $lastEmptyCell.addClass(that.player);
+
       //switches which player has gone.
       that.player = (that.player === 'red') ? 'black' : 'red';
-    })
+      $(this).trigger('mouseenter');
+    });
   }
 }
