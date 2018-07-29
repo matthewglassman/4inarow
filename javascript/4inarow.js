@@ -75,7 +75,7 @@ class Fourinarow{
       //const row = $(this).data('row');
 
       const $lastEmptyCell = findLastEmptyCell(col);
-      $lastEmptyCell.removeClass('empty next-${that.player}');
+      $lastEmptyCell.removeClass(`empty next-${that.player}`);
       $lastEmptyCell.addClass(that.player);
 
       //switches which player has gone.
