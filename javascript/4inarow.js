@@ -78,8 +78,11 @@ class Fourinarow{
       $lastEmptyCell.addClass(that.player);
       $lastEmptyCell.data('player', that.player);
 
-      const winner = that.checkForWinner(row, col);
-      if (winner){
+      const winner = that.checkForWinner(
+        $lastEmptyCell.data('row'),
+        $lastEmptyCell.data('col')
+      )
+      if (winner) {
         alert(`Game Over! Player ${that.player} has won!`);
         return;
       }
@@ -123,10 +126,26 @@ class Fourinarow{
         return null;
       }
     }
+
+    function checkDiagonalBLtoTR(){
+      return checkWin({i: 1, j: -1}, {i:1, j:1});
+    }
+
+    function checkDiagonalTLtoBR(){
+      return checkWin({i: 1, j: 1}, {i: -1, j:-1});
+    }
+
     function checkVerticals (){
       //pass in directions
       return checkWin({i: -1, j: 0}, {i: 1, j: 0});
     }
-    return checkVerticals()
+
+    function checkHorizontals (){
+      //pass in directions
+      return checkWin({i: 0, j: -1}, {i: 0, j: 1});
+    }
+
+    return checkVerticals() || checkHorizontals() ||
+      checkDiagonalBLtoTR() || checkDiagonalTLtoBR();
   }
 }
