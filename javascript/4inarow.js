@@ -16,6 +16,8 @@ class Fourinarow{
   //Adding a method that will build up a bunch of divs into grid
   createGrid() {
     const $board = $(this.selector);
+    this.isGameOver = false;
+    this.player = 'red';
 
     //for loop creating the rows and columns
 
@@ -158,5 +160,9 @@ class Fourinarow{
 
     return checkVerticals() || checkHorizontals() ||
       checkDiagonalBLtoTR() || checkDiagonalTLtoBR();
+  }
+
+  restart(){
+    this.createGrid();
   }
 }
