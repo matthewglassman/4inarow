@@ -102,8 +102,9 @@ class Fourinarow{
         return;
       }
       //switches which player has gone.
-      that.onPlayerMove();
       that.player = (that.player === 'red') ? 'black' : 'red';
+      that.onPlayerMove();
+
       $(this).trigger('mouseenter');
     });
   }
