@@ -81,7 +81,7 @@ class Fourinarow{
     $board.on('click', '.col.empty', function () {
       if (that.isGameOver) return;
       const col = $(this).data('col');
-      const row = $(this).data('row');
+      //const row = $(this).data('row');
 
       const $lastEmptyCell = findLastEmptyCell(col);
       $lastEmptyCell.removeClass(`empty next-${that.player}`);
@@ -111,7 +111,7 @@ class Fourinarow{
   checkForWinner(row, col){
     const that = this;
 
-    function getCell(i, j) {
+    function $getCell(i, j) {
       return $(`.col[data-row='${i}'][data-col='${j}']`);
     }
 
@@ -123,12 +123,12 @@ class Fourinarow{
       let i = row + direction.i;
       let j = col + direction.j;
       let $next = $getCell(i, j);
-      while(i >= 0 && i < that.ROWS && j >= 0 && j < that.COLS &&
+      while (i >= 0 && i < that.ROWS && j >= 0 && j < that.COLS &&
         $next.data('player') === that.player) {
           total++;
           i += direction.i;
           j += direction.j;
-          $next = getCell(i, j);
+          $next = $getCell(i, j);
       }
       return total;
     }

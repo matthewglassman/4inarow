@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/matthewglassman/4inarow/issues"
   },
-  "homepage": "https://github.com/matthewglassman/4inarow#readme"
+  "homepage": "https://github.com/matthewglassman/4inarow#readme",
+  "dependencies": {
+    "livereload": "^0.7.0"
+  }
 }
