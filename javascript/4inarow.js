@@ -11,7 +11,6 @@ class Fourinarow{
     this.createGrid();
     this.setupEventListeners();
     this.isGameOver = false;
-
   }
 
   //Adding a method that will build up a bunch of divs into grid
