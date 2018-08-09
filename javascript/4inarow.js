@@ -7,6 +7,7 @@ class Fourinarow{
     this.COLS = 7;
     this.player = 'red';
     this.selector = selector;
+    this.onPlayerMove = function() {};
     this.createGrid();
     this.setupEventListeners();
     this.isGameOver = false;
@@ -101,6 +102,7 @@ class Fourinarow{
         return;
       }
       //switches which player has gone.
+      that.onPlayerMove();
       that.player = (that.player === 'red') ? 'black' : 'red';
       $(this).trigger('mouseenter');
     });

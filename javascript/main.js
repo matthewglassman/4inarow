@@ -2,7 +2,11 @@ $(document).ready(function(){
   //Draw grid here by instantiating new grid object from 4inarow.js
   const fourinarow = new Fourinarow('#fourinarow');
 
+  connect4.onPlayerMove = function() {
+    $('#player').text(fourinarow.player);
+  }
+
   $('#restart').click(function(){
-    connect4.restart();
+    fourinarow.restart();
   })
 });
