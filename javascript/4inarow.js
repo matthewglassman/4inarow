@@ -91,6 +91,10 @@ class Fourinarow{
       if (winner) {
         that.isGameOver = true;
         alert(`Game Over! Player ${that.player} has won!`);
+
+        //removes hover effect of having a pointer finger instead of cursor
+
+        $('.col.empty').removeClass('empty');
         return;
       }
       //switches which player has gone.
