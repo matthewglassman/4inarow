@@ -168,5 +168,6 @@ class Fourinarow{
 
   restart(){
     this.createGrid();
+    this.onPlayerMove();
   }
 }
