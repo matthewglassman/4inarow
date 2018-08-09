@@ -16,6 +16,7 @@ class Fourinarow{
   //Adding a method that will build up a bunch of divs into grid
   createGrid() {
     const $board = $(this.selector);
+    $board.empty();
     this.isGameOver = false;
     this.player = 'red';
 
