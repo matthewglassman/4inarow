@@ -9,6 +9,7 @@ class Fourinarow{
     this.selector = selector;
     this.createGrid();
     this.setupEventListeners();
+    this.isGameOver = false;
 
   }
 
@@ -57,6 +58,10 @@ class Fourinarow{
     }
 
     $board.on('mouseenter', '.col.empty', function () {
+
+      //if the game is over don't allow further action
+
+      if (that.isGameOver) return;
       const col = $(this).data('col');
       const $lastEmptyCell = findLastEmptyCell(col);
       $lastEmptyCell.addClass(`next-${that.player}`);
@@ -70,6 +75,7 @@ class Fourinarow{
     });
 
     $board.on('click', '.col.empty', function () {
+      if (that.isGameOver) return;
       const col = $(this).data('col');
       const row = $(this).data('row');
 
@@ -83,6 +89,7 @@ class Fourinarow{
         $lastEmptyCell.data('col')
       )
       if (winner) {
+        that.isGameOver = true;
         alert(`Game Over! Player ${that.player} has won!`);
         return;
       }
