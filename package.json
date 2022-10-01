@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/matthewglassman/4inarow#readme",
   "dependencies": {
-    "livereload": "^0.7.0"
+    "livereload": "^0.9.3"
   }
 }
